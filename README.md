@@ -35,15 +35,14 @@ with MambaClient() as client:
 ## Structure
 ```
 MambaDocumentation/
-├── 01_getting_started/          # Installation and first steps
-├── 02_email_osint/              # Email validation and breach checking
-├── 03_domain_osint/             # WHOIS, DNS, subdomain enumeration
-├── 04_username_osint/           # Social media username search
-├── 05_phone_osint/              # Phone number validation
-├── 06_ip_osint/                 # IP geolocation and reputation
-├── 07_advanced/                 # Caching, batch processing, rate limiting
-├── 08_cli_usage/                # Command line interface examples
-└── 09_real_world/               # Production-ready scripts
+├── 01_email_osint/              # Email validation and breach checking
+├── 02_domain_osint/             # WHOIS, DNS, subdomain enumeration
+├── 03_username_osint/           # Social media username search
+├── 04_phone_osint/              # Phone number validation
+├── 05_ip_osint/                 # IP geolocation and reputation
+├── 06_advanced/                 # Caching, batch processing, rate limiting
+├── 07_cli_usage/                # Command line interface examples
+└── 08_real_world/               # Production-ready scripts
 ```
 
 ## Verify
