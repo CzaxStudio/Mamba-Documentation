@@ -19,3 +19,101 @@ Mamba is a powerful, production-ready OSINT (Open Source Intelligence) library f
 
 ```bash
 pip install mamba-security
+```
+
+## Example
+```python
+
+from mamba import MambaClient, EmailReputation
+
+with MambaClient() as client:
+    email = EmailReputation(client)
+    result = email.validate_format("user@example.com")
+    print(result.summary())
+
+```
+## Structure
+```
+MambaDocumentation/
+├── 01_getting_started/          # Installation and first steps
+├── 02_email_osint/              # Email validation and breach checking
+├── 03_domain_osint/             # WHOIS, DNS, subdomain enumeration
+├── 04_username_osint/           # Social media username search
+├── 05_phone_osint/              # Phone number validation
+├── 06_ip_osint/                 # IP geolocation and reputation
+├── 07_advanced/                 # Caching, batch processing, rate limiting
+├── 08_cli_usage/                # Command line interface examples
+└── 09_real_world/               # Production-ready scripts
+```
+
+## Verify
+```python
+python -c "from mamba import MambaClient; print('Mamba installed successfully!')"
+```
+## Get Started
+
+Hello Investigators. This script will help you to get started in Mamba.
+```python
+
+
+---
+
+## File 3: `01_getting_started/first_script.py`
+
+```python
+#!/usr/bin/env python3
+"""
+Mamba First Script - Your First OSINT Investigation
+"""
+
+from mamba import MambaClient
+from mamba import EmailReputation, DomainIntel
+from mamba.utils import ResultFormatter
+
+def main():
+    print("=" * 60)
+    print("Mamba OSINT - First Investigation")
+    print("=" * 60)
+    
+    # Create client with context manager (auto-closes connection)
+    with MambaClient() as client:
+        
+        # 1. Email Investigation
+        print("\n1. EMAIL INVESTIGATION")
+        print("-" * 40)
+        email = EmailReputation(client)
+        
+        result = email.validate_format("security@example.com")
+        print(f"Email: security@example.com")
+        print(f"  Valid format: {result.data['valid_format']}")
+        print(f"  Has MX records: {result.data['has_mx_records']}")
+        print(f"  Domain: {result.data['domain']}")
+        
+        # 2. Domain Investigation
+        print("\n2. DOMAIN INVESTIGATION")
+        print("-" * 40)
+        domain = DomainIntel(client)
+        
+        result = domain.dns_records("google.com")
+        print(f"Domain: google.com")
+        print(f"  DNS record types found: {result.data['total_record_types']}")
+        
+        if 'A' in result.data['records'] and result.data['records']['A']:
+            print(f"  IP Address: {result.data['records']['A'][0]}")
+        
+        # 3. Result Formatting
+        print("\n3. RESULT FORMATTING")
+        print("-" * 40)
+        print(f"Summary: {result.summary()}")
+        print(f"JSON: {result.to_json()[:100]}...")
+    
+    print("\n" + "=" * 60)
+    print("Investigation complete!")
+    print("=" * 60)
+
+if __name__ == "__main__":
+    main()
+```
+
+## FOR MORE SCRIPTS GO ABOVE TO THE FILES.
+
